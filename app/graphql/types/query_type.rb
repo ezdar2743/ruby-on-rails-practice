@@ -2,10 +2,14 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :allTodos, [Types::TodoType], null:false, description: "Returns all todos"
-
+    field :all_todos, [Types::TodoType], null:false, description: "Returns all todos"
+    field :completed_todos, [Types::TodoType],null:false, description: "Returns all completed todos"0
     def all_todos
       Todo.all
+    end
+
+    def completed_todos
+      Todo.where(completed: true)
     end
   end
 end
